@@ -25,8 +25,10 @@ const Login = () => {
     resolver: yupResolver(schema),
     mode: "onBlur",
     defaultValues,
-    reValidateMode: "onChange",
+    reValidateMode: "onBlur",
   });
+
+  console.log(isValid);
 
   return (
     <Container>
@@ -49,7 +51,11 @@ const Login = () => {
             errorMessage={errors?.password?.message}
           />
           <Spacing />
-          <Button title="Entrar" />
+          <Button
+            title="Entrar"
+            disabled={isValid}
+            onClick={() => alert("Estou ativo")}
+          />
         </Column>
       </LoginContainer>
     </Container>
